@@ -32,4 +32,4 @@ COPY --from=builder /usr/src/app/dist ./dist
 
 EXPOSE 80
 
-RUN npm run start
+CMD [ "node", "./dist/index.js" ]
