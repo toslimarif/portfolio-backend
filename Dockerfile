@@ -18,7 +18,7 @@ RUN npm ci --quiet && npm run build
 # This state compile get back the JavaScript code from builder stage
 # It will also install the production package only
 
-FROM node:latest-alpine
+FROM node:12-alpine
 
 WORKDIR /app
 
@@ -30,5 +30,6 @@ RUN npm ci --quiet --only=production
 ## We just need the build to execute the command
 COPY --from=builder /usr/src/app/dist ./dist
 
+EXPOSE 80
+
 RUN npm run start
-EXPOSE 3000
